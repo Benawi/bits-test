@@ -1,8 +1,23 @@
 export default {
-    extends: "stylelint-config-standard",
-    rules: {
-      "indentation": 2, // Enforce 2 spaces for indentation
-      "color-hex-case": "lower", // Ensure lowercase hex colors
+    "extends": ["stylelint-config-standard"],
+    "plugins": ["stylelint-scss", "stylelint-csstree-validator"],
+    "rules": {
+      "color-hex-length": "short",
+      "color-hex-case": "lower",
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "tailwind",
+            "apply",
+            "variants",
+            "responsive",
+            "screen"
+          ]
+        }
+      ]
     },
+    "csstree/validator": true,
+    "ignoreFiles": ["build/**", "dist/**", "**/reset*.css", "**/bootstrap*.css"]
   };
-  
